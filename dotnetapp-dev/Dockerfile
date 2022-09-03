@@ -6,7 +6,7 @@ COPY *.sln .
 COPY dotnetapp/*.csproj ./dotnetapp/
 COPY utils/*.csproj ./utils/
 COPY tests/*.csproj ./tests/
-RUN dotnet restore "dotnetapp.csproj"
+RUN dotnet restore
 
 # copy and build everything else
 COPY dotnetapp/. ./dotnetapp/
