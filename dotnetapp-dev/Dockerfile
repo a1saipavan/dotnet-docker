@@ -19,9 +19,9 @@ RUN dotnet build
 #WORKDIR /app/tests
 #ENTRYPOINT ["dotnet", "test","--logger:trx"]
 
-FROM build AS test
-WORKDIR /app/tests
-RUN dotnet test
+#FROM build AS test
+#WORKDIR /app/tests
+#RUN dotnet test
 
 FROM test AS publish
 WORKDIR /app/dotnetapp
