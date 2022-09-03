@@ -23,9 +23,9 @@ RUN dotnet build
 #WORKDIR /app/tests
 #RUN dotnet test
 
-FROM test AS publish
-WORKDIR /app/dotnetapp
-RUN dotnet publish -o out
+#FROM test AS publish
+#WORKDIR /app/dotnetapp
+#RUN dotnet publish -o out
 
 FROM mcr.microsoft.com/dotnet:5.0-runtime AS runtime
 WORKDIR /app
