@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -27,7 +27,7 @@ FROM test AS publish
 WORKDIR /app/dotnetapp
 RUN dotnet publish -o out
 
-FROM mcr.microsoft.com/dotnet:2.0-runtime AS runtime
+FROM mcr.microsoft.com/dotnet:5.0-runtime AS runtime
 WORKDIR /app
 COPY --from=publish /app/dotnetapp/out ./
 ENTRYPOINT ["dotnet", "dotnetapp.dll"]
