@@ -27,7 +27,9 @@ RUN dotnet build
 #WORKDIR /app/dotnetapp
 #RUN dotnet publish -o out
 
-FROM mcr.microsoft.com/dotnet:5.0-runtime AS runtime
+#mcr.microsoft.com/dotnet:5.0-runtime
+
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS runtime
 WORKDIR /app
 COPY --from=publish /app/dotnetapp/out ./
 ENTRYPOINT ["dotnet", "dotnetapp.dll"]
