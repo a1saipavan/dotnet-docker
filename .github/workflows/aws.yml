@@ -30,7 +30,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: dotnetapp-dev
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: latest
           working-directory: dotnetapp-dev/
         run: |
           cd dotnetapp-dev/
