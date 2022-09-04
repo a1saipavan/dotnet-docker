@@ -34,10 +34,10 @@ jobs:
           working-directory: dotnetapp-dev/
         run: |
           cd dotnetapp-dev/
-          docker build --target testrunner -t $IMAGE_TAG .
-          docker run --rm -v "$(pwd)"/TestResults:/app/tests/TestResults $IMAGE_TAG
+          docker build --target testrunner -t dotnetapp-dev:test .
+          docker run --rm -v "$(pwd)"/TestResults:/app/tests/TestResults dotnetapp-dev:test
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 755247318680.dkr.ecr.us-east-1.amazonaws.com
-          docker push 755247318680.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_TAG
+          docker push 755247318680.dkr.ecr.us-east-1.amazonaws.com/dotnetapp-dev:test
         
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
