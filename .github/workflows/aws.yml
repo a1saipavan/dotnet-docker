@@ -37,7 +37,7 @@ jobs:
           docker build --target testrunner -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
       - name: unit testing and push image 
         run: |
-          cd dotnetapp-dev/
+          
           docker run --rm -v "$(pwd)"/TestResults:/app/tests/TestResults $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG        
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
