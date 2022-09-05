@@ -15,15 +15,15 @@ COPY tests/. ./tests/
 
 RUN dotnet build
 
-FROM base AS testrunner
-WORKDIR /app/tests
-ENTRYPOINT ["dotnet", "test","--logger:trx"]
+#FROM base AS testrunner
+#WORKDIR /app/tests
+#ENTRYPOINT ["dotnet", "test","--logger:trx"]
 
-FROM testrunner AS test
-WORKDIR /app/tests
-RUN dotnet test
+#FROM testrunner AS test
+#WORKDIR /app/tests
+#RUN dotnet test
 
-FROM test AS publish
+FROM base AS publish
 WORKDIR /app/dotnetapp
 RUN dotnet publish -o out
 
