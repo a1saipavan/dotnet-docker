@@ -34,8 +34,9 @@ jobs:
           working-directory: dotnetapp-dev/
         run: |
           cd dotnetapp-dev/
-          docker build --target testrunner -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .        
-          docker run --rm -v "$(pwd)"/TestResults:/app/tests/TestResults $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build --target testrunner -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+
+          docker run --rm $IMAGE_TAG echo "run test commands here"
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG        
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
